@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Would You Be My Valentine? 💘</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            max-width: 650px;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #d6336c;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            font-size: 18px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s ease;
+        }
+
+        .yes-btn {
+            background-color: #ff4e8a;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 78, 138, 0.6);
+        }
+
+        .soft-btn {
+            background-color: #ffffff;
+            color: #d6336c;
+            border: 2px solid #d6336c;
+        }
+
+        .soft-btn:hover {
+            background-color: #d6336c;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .no-btn {
+            background-color: #ccc;
+            color: #333;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 100, 0.6);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .transition-message {
+            font-size: 22px;
+            color: #d6336c;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 1.5s ease forwards;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Would You Be My Valentine? 💘</h1>
+
+        <p>
+            You are the most beautiful part of my world.  
+            Every laugh, every memory, every second with you  
+            is something I never take for granted.
+            <br><br>
+            Im sorry lovelove for all of things that I did 
+            and failed to do. Please give me this chance to
+            show yo how much I appreciate you.
+        </p>
+
+        <!-- Main romantic button -->
+        <button class="btn yes-btn" onclick="goToLetter()">
+            Yes, I’ll be yours 💖
+        </button>
+
+        <!-- Playful no button -->
+        <button class="btn no-btn" onclick="moveButton()" id="noBtn">
+            No 😢
+        </button>
+
+        <div class="transition-message" id="message">
+            You just made me the happiest person alive... 💞
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById("noBtn");
+            button.style.position = "absolute";
+            button.style.top = Math.random() * window.innerHeight + "px";
+            button.style.left = Math.random() * window.innerWidth + "px";
+        }
+
+        function goToLetter() {
+            document.getElementById("message").style.display = "block";
+            setTimeout(function() {
+                window.location.href = "letter.html";
+            }, 2500);
+        }
+
+        // Floating hearts
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+</html>
