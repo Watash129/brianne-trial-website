@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question 2</title>
+</head>
+<body style="text-align:center; font-family:Arial; margin-top:100px;">
+
+    <h1>How much do you love your partner?</h1>
+
+    <form onsubmit="goToNextPage(); return false;">
+        <input type="text" id="loveAnswer" 
+               placeholder="Type your answer here..." 
+               style="padding:10px; width:300px; font-size:16px;">
+        <br><br>
+        <button type="submit" style="padding:10px 25px; font-size:16px;">
+            Submit 💌
+        </button>
+    </form>
+
+    <script>
+        function goToNextPage() {
+            var answer = document.getElementById("loveAnswer").value;
+            if(answer.trim() !== "") {
+                localStorage.setItem("loveAnswer", answer);
+                window.location.href = "reveal.html";
+
+            } else {
+                alert("Please write something first 💕");
+            }
+        }
+    </script>
+
+</body>
+</html>
